@@ -9,3 +9,15 @@ An API to modify a user's seat
 
 
 Attaching the response below:
+
+POST CREATE-USER:
+![AddUser](https://github.com/user-attachments/assets/908711dd-7eb0-4e02-b318-3579ac945eb5)
+
+GET RECEIPT:
+![GetReceipt](https://github.com/user-attachments/assets/a16b2f54-b1fc-4d8b-ba16-b63ee5395c8d)
+
+GET SECTION
+![GetSection](https://github.com/user-attachments/assets/7297dc36-4755-4fe6-a56a-5d9c4e6dd653)
+
+POST PURCHASE-TICKET
+![PurchaseTicket](https://github.com/user-attachments/assets/52430485-acb0-4129-a0f1-c95b74753f34)
