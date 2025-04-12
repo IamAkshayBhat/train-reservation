@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.app.trainreservration.dto.UserRequest;
 import com.app.trainreservration.entity.TicketUser;
 import com.app.trainreservration.service.UserService;
 
@@ -26,11 +27,17 @@ class UserControllerTest {
 
 	@Test
 	void givenAValidUser_WhenIcallCreateUser_thenUserIsCreated() {
+		UserRequest userRequest = mock(UserRequest.class);
 		TicketUser user = mock(TicketUser.class);
-		when(userService.createUser(any(TicketUser.class))).thenReturn(user);
-		userController.createUser(user);
-		verify(userService, times(1)).createUser(any(TicketUser.class));
-		
+		when(userService.createUser(any(UserRequest.class))).thenReturn(user);
+		userController.createUser(userRequest);
+		verify(userService, times(1)).createUser(any(UserRequest.class));
+	}
+	
+	@Test
+	void givenAValidUserId_WhenIcallRemoveUser_thenUserIsRemoved() {
+		userController.removeUser(1L);
+		verify(userService, times(1)).removeUser(any());
 	}
 	
 

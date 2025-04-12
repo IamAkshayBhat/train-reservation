@@ -1,8 +1,6 @@
-
 package com.app.trainreservration.entity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -26,15 +24,18 @@ public class Ticket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private String fromLocation;
 	private String toLocation;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private TicketUser user;
 	private double pricePaid;
+	
 	@Enumerated(EnumType.STRING)
 	private Section section;
 	private String seatNumber;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@Schema(accessMode = Schema.AccessMode.READ_ONLY)
+	private TicketUser user;
 	
 }

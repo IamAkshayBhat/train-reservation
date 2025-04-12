@@ -14,9 +14,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.app.trainreservration.dto.TicketRequest;
 import com.app.trainreservration.entity.Section;
 import com.app.trainreservration.entity.Ticket;
 import com.app.trainreservration.entity.TicketUser;
+import com.app.trainreservration.repo.TicketRepository;
 import com.app.trainreservration.service.TicketService;
 import com.app.trainreservration.service.UserService;
 
@@ -31,15 +33,19 @@ class TicketControllerTest {
 	
 	@Mock
 	private UserService userService;
+	
+	@Mock
+	private TicketRepository ticketRepository;
 
 	@Test
 	void givenAValidTicket_WhenIcallPurchaseTicket_thenPurchaseIsSuccessful() {
 		Ticket ticket = mock(Ticket.class);
+		TicketRequest ticketRequest = mock(TicketRequest.class);
 		TicketUser user = mock(TicketUser.class);
 		when(userService.findById(any())).thenReturn(user);
-		when(ticketService.purchaseTicket(any(Ticket.class))).thenReturn(ticket);
-		ticketController.purchaseTicket(ticket, 1L);
-		verify(ticketService, times(1)).purchaseTicket(any(Ticket.class));
+		when(ticketService.purchaseTicket(any(TicketRequest.class), any(TicketUser.class))).thenReturn(ticket);
+		ticketController.purchaseTicket(ticketRequest, 1L);
+		verify(ticketService, times(1)).purchaseTicket(any(TicketRequest.class), any(TicketUser.class));
 		
 	}
 	
@@ -58,6 +64,13 @@ class TicketControllerTest {
 		when(ticketService.getUserBySection(any())).thenReturn(List.of(ticket));
 		ticketController.getUsersBySection(Section.A.name());
 		verify(ticketService, times(1)).getUserBySection(any());
+		
+	}
+	
+	@Test
+	void givenAValidUserIdAndNewSeat_WhenIcallModifyUserSeat_thenItModifiestheSeat() {
+		ticketController.modifyUserSeat(1L, "32");
+		verify(ticketService, times(1)).modifyUserSeat(1L, "32");
 		
 	}
 

@@ -1,18 +1,18 @@
 package com.app.trainreservration.exception;
 
-import lombok.Getter;
-import lombok.experimental.StandardException;
+import org.springframework.http.HttpStatus;
 
-@StandardException
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@SuppressWarnings("serial")
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class NotFoundException extends RuntimeException{
 	
-	private String errorCode;
+	private HttpStatus errorCode;
 	private String errorMessage;
-	
-	public NotFoundException(String errorCode, String errorMessage) {
-		this.errorCode = errorCode;
-		this.errorMessage = errorMessage;
-	}
 
 }
