@@ -163,7 +163,11 @@ mvn clean install
 ### Step 3: Run Your Spring Boot App
 
 
-The API will be running on `http://localhost:8000`.
+The API will be running on `http://localhost:8080`.
+
+### Step 3: To Play with the app after running your application.
+
+You can do it using 'http://localhost:8080//swagger-ui/index.html'
 
 ## Example Usage
 
@@ -171,15 +175,14 @@ The API will be running on `http://localhost:8000`.
 
 **Add a User:**
 
-![AddUser](https://github.com/user-attachments/assets/908711dd-7eb0-4e02-b318-3579ac945eb5)
-
+![AddUser](https://github.com/user-attachments/assets/722c8107-0f5d-4cd8-83c4-47888e3a26b6)
 
 
 ---
 
 **View Receipt:**
 
-![GetReceipt](https://github.com/user-attachments/assets/a16b2f54-b1fc-4d8b-ba16-b63ee5395c8d)
+![GetReceipt](https://github.com/user-attachments/assets/e7ef1f7e-a8a4-4855-b550-7abb46491e21)
 
 
 
@@ -187,8 +190,7 @@ The API will be running on `http://localhost:8000`.
 
 **Get Details By Section**
 
-![GetSection](https://github.com/user-attachments/assets/7297dc36-4755-4fe6-a56a-5d9c4e6dd653)
-
+![GetSection](https://github.com/user-attachments/assets/467443be-6220-4d1c-ba19-b0da83dc5258)
 
 
 
@@ -196,4 +198,5 @@ The API will be running on `http://localhost:8000`.
 
 **Purchase a Ticket:**
 
-![PurchaseTicket](https://github.com/user-attachments/assets/52430485-acb0-4129-a0f1-c95b74753f34)
+
+![PurchaseTicket](https://github.com/user-attachments/assets/1e73fcd4-0bd5-4a9a-b6e6-e28f583b5b05)
