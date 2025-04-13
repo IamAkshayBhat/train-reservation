@@ -1,10 +1,6 @@
 package com.app.trainreservration.dto;
 
-import com.app.trainreservration.entity.Section;
-
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -44,8 +40,9 @@ public class TicketRequest {
 	@DecimalMin(value = "0.01", inclusive = true, message = "pricePaid must be greater than zero")
 	private double pricePaid;
 	
-	@Enumerated(EnumType.STRING)
-	private Section section;
-	private String seatNumber;
+	/*
+	 * @Enumerated(EnumType.STRING) private Section section; private String
+	 * seatNumber;
+	 */
 	
 }

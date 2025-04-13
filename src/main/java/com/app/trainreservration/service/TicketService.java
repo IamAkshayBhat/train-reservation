@@ -2,6 +2,7 @@ package com.app.trainreservration.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,26 @@ public class TicketService {
 	@Autowired
 	private TicketRepository ticketRepository;
 	
+	private final AtomicInteger sectionACounter = new AtomicInteger(1);
+    private final AtomicInteger sectionBCounter = new AtomicInteger(1);
+    private final int maxSeatsPerSection = 5;
+	
 	public Ticket purchaseTicket(TicketRequest ticketRequest, TicketUser user) {
 		var ticket = TicketMapper.INSTANCE.mapToTicket(ticketRequest);
+		Section section;
+        String seatNumber;
+
+        if (sectionACounter.get() <= maxSeatsPerSection) {
+            section = Section.A;
+            seatNumber = section.name() + sectionACounter.getAndIncrement();
+        } else if (sectionBCounter.get() <= maxSeatsPerSection) {
+            section = Section.B;
+            seatNumber = section.name() + sectionBCounter.getAndIncrement();
+        } else {
+            throw new IllegalStateException("All seats are booked.");
+        }
+        ticket.setSection(section);
+        ticket.setSeatNumber(seatNumber);
 		ticket.setUser(user);
 		return ticketRepository.save(ticket);
 	}
@@ -33,8 +52,8 @@ public class TicketService {
 	
 	public List<Ticket> getUserBySection(String section) {
 		var tickets = ticketRepository.findBySection(Section.valueOf(section.toUpperCase()));
-		if(Objects.isNull(tickets)) {
-			throw new NotFoundException(HttpStatus.NOT_FOUND, "Section Not Found");
+		if(Objects.isNull(tickets) || tickets.isEmpty()) {
+			throw new NotFoundException(HttpStatus.NOT_FOUND, "No User present in Section: " + section);
 		}
 		return tickets;
 	}

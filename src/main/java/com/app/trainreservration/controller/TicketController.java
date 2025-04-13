@@ -18,7 +18,6 @@ import com.app.trainreservration.service.TicketService;
 import com.app.trainreservration.service.UserService;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 
 @RestController
 @RequestMapping("/api/tickets")
@@ -32,7 +31,7 @@ public class TicketController {
 	
 	@PostMapping(value = "/purchase", consumes = "application/json")
 	public ResponseEntity<Ticket> purchaseTicket(@RequestBody @Valid TicketRequest ticket, 
-			@RequestParam(required = true) @Min(1) Long userId) {
+			@RequestParam(required = true) Long userId) {
 		var user = userService.findById(userId);
 		return ResponseEntity.ok(ticketService.purchaseTicket(ticket, user));
 	}
