@@ -40,9 +40,4 @@ public class TicketRequest {
 	@DecimalMin(value = "0.01", inclusive = true, message = "pricePaid must be greater than zero")
 	private double pricePaid;
 	
-	/*
-	 * @Enumerated(EnumType.STRING) private Section section; private String
-	 * seatNumber;
-	 */
-	
 }

@@ -24,15 +24,11 @@ This endpoint allows users to submit a purchase for a ticket, which includes det
 {
   "fromLocation": "London",
   "toLocation": "France",
-  "user": {
-    "firstName": "John",
-    "lastName": "Lynch",
-    "email": "john.lynch@example.com"
-  },
-  "section": "A"
   "price_paid": 5.0
 }
 ```
+
+**Request Paran:** UserID
 
 **Response:**
 
@@ -48,7 +44,7 @@ This endpoint allows users to submit a purchase for a ticket, which includes det
   },
   "section": "A"
   "price_paid": 5.0,
-  "seatNumber": 21
+  "seatNumber": A1
 }
 ```
 
@@ -72,7 +68,7 @@ This endpoint returns the receipt details for a user based on their **user_id**.
   },
   "section": "A"
   "price_paid": 5.0,
-  "seatNumber": 21
+  "seatNumber": A1
 }
 ```
 
@@ -100,7 +96,7 @@ This endpoint allows you to view all users and the seats they are allocated with
   },
   "section": "A"
   "price_paid": 5.0,
-  "seatNumber": 21
+  "seatNumber": A1
 }
 ```
 
@@ -138,7 +134,7 @@ This endpoint allows you to modify a user’s seat. The user’s current seat wi
   },
   "section": "A"
   "price_paid": 5.0,
-  "seatNumber": 21
+  "seatNumber": A1
 }
 ```
 
